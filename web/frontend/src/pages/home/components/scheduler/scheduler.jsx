@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, List, TimePicker, Modal } from 'antd';
 import moment from 'moment';
 import nanoid from 'nanoid';
+import { api } from '../../api';
 import './scheduler.scss';
 
 const timeFormat = 'HH:mm';
@@ -14,6 +15,8 @@ const useScheduler = () => {
       time: moment()
     };
     setSchedules(oldSchedules => [...oldSchedules, schedule]);
+
+    api.createOrUpdateSchedule(schedule);
   };
   const updateSchedule = (id, time) => {
     setSchedules(oldSchedules => {
@@ -24,6 +27,8 @@ const useScheduler = () => {
       }
 
       itemToUpdate.time = time;
+
+      api.createOrUpdateSchedule(itemToUpdate);
 
       return [...oldSchedules];
     });
@@ -40,13 +45,24 @@ const useScheduler = () => {
       content: `Вы точно уверены, что хотите удалить запись на ${itemToRemove.time.format(
         'HH:mm'
       )}?`,
-      onOk: () => {
+      onOk: async () => {
         setSchedules(oldSchedules =>
           oldSchedules.filter(item => item.id !== id)
         );
+        await api.deleteSchedule(id);
       }
     });
   };
+
+  useEffect(() => {
+    const fetchSchedules = async () => {
+      const schedules = await api.getSchedules();
+
+      setSchedules(schedules);
+    };
+
+    fetchSchedules();
+  }, []);
 
   return {
     schedules,
@@ -79,7 +95,7 @@ export const Scheduler = () => {
               <TimePicker
                 format={timeFormat}
                 onChange={time => updateSchedule(item.id, time)}
-                defaultValue={item.time}
+                value={item.time}
               />
               <Button
                 type="danger"

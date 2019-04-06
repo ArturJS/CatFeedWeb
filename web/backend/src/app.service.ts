@@ -8,6 +8,7 @@ interface TSchedule {
 @Injectable()
 export class AppService {
   private schedules = [];
+  private portionSize = 50;
 
   getHello(): string {
     return 'Hello World!';
@@ -17,7 +18,13 @@ export class AppService {
     return 'Ok';
   }
 
+  getPortionSize() {
+    return { size: this.portionSize };
+  }
+
   updatePortionSize(size: number) {
+    this.portionSize = size;
+
     return { size };
   }
 
