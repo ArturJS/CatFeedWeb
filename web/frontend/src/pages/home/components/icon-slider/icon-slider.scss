@@ -1,13 +1,19 @@
 .icon-slider {
-  display: flex;
-  width: 100%;
-
-  .anticon {
-    display: inline-flex;
-    align-items: center;
+  .current-value {
+    text-align: center;
   }
 
-  .ant-slider {
-    flex-grow: 1;
+  .slider-wrapper {
+    display: flex;
+    width: 100%;
+
+    .anticon {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .ant-slider {
+      flex-grow: 1;
+    }
   }
 }

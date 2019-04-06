@@ -12,9 +12,12 @@ export const IconSlider = ({ onChange }) => {
 
   return (
     <div className="icon-slider">
-      <Icon style={{ color: preColor }} type="frown-o" />
-      <Slider onChange={setValue} value={value} />
-      <Icon style={{ color: nextColor }} type="smile-o" />
+      .<div className="current-value">{value}%</div>
+      <div className="slider-wrapper">
+        <Icon style={{ color: preColor }} type="frown-o" />
+        <Slider onChange={setValue} value={value} />
+        <Icon style={{ color: nextColor }} type="smile-o" />
+      </div>
     </div>
   );
 };
