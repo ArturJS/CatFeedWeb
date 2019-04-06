@@ -2,3 +2,4 @@ mobile-app/mobileApp/cat-feeder/node_modules/
 mobile-app/mobileApp/node_modules/
 mobile-app/mobileApp/cat-feeder/platforms/browser/cordova/node_modules/
 mobile-app/mobileApp/cat-feeder/platforms/android/cordova/node_modules/
+.vscode
