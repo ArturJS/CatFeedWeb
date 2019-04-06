@@ -1,23 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Button } from 'antd';
+import { IconSlider } from './components';
 import './home.scss';
 
 export const Home = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+    <div className="home">
+      <div className="page-content">
+        <h1>Кормушка для кота</h1>
+        <div>
+          <Button type="primary">Покормить сейчас</Button>
+        </div>
+
+        <div>
+          <h2>Настройки</h2>
+          <div>
+            <h3>Размер порции</h3>
+            <IconSlider />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
