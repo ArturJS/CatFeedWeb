@@ -1,0 +1,10 @@
+{
+    "root": true,
+    "extends": ["unobtrusive", "unobtrusive/import", "unobtrusive/react"],
+    "env": {
+      "browser": true
+    },
+    "globals": {
+      "process": true
+    }
+  }
