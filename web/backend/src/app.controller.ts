@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
 import { AppService } from './app.service';
-import { PortionSizeDto } from './dto';
+import { PortionSizeDto, ScheduleDto } from './dto';
 
 @Controller()
 export class AppController {
@@ -21,5 +21,25 @@ export class AppController {
     const { size } = portionSizeDto;
 
     return this.appService.updatePortionSize(size);
+  }
+
+  @Get('/schedules')
+  getSchedules() {
+    return this.appService.getSchedules();
+  }
+
+  @Post('/schedules')
+  createOrUpdateSchedule(@Body() scheduleDto: ScheduleDto) {
+    const { id, time } = scheduleDto;
+
+    return this.appService.createOrUpdateSchedule({
+      id,
+      time,
+    });
+  }
+
+  @Delete('/schedules/:id')
+  deleteSchedule(@Param('id') id: string) {
+    return this.appService.deleteSchedule(id);
   }
 }
