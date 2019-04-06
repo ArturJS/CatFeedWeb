@@ -12,7 +12,7 @@ export const IconSlider = ({ onChange }) => {
 
   return (
     <div className="icon-slider">
-      .<div className="current-value">{value}%</div>
+      <div className="current-value">{value}%</div>
       <div className="slider-wrapper">
         <Icon style={{ color: preColor }} type="frown-o" />
         <Slider onChange={setValue} value={value} />

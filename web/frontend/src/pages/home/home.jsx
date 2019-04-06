@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { IconSlider } from './components';
+import { IconSlider, Scheduler } from './components';
 import './home.scss';
 
 export const Home = () => {
@@ -8,17 +8,21 @@ export const Home = () => {
     <div className="home">
       <div className="page-content">
         <h1>Кормушка для кота</h1>
-        <div>
+        <section>
           <Button type="primary">Покормить сейчас</Button>
-        </div>
+        </section>
 
-        <div>
+        <section>
           <h2>Настройки</h2>
           <div>
             <h3>Размер порции</h3>
             <IconSlider />
           </div>
-        </div>
+        </section>
+
+        <section>
+          <Scheduler />
+        </section>
       </div>
     </div>
   );
