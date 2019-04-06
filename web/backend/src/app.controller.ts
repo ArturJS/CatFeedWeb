@@ -16,6 +16,11 @@ export class AppController {
     return this.appService.feedNow();
   }
 
+  @Get('/portion-size')
+  async getPortionSize() {
+    return this.appService.getPortionSize();
+  }
+
   @Post('/portion-size')
   async updatePortionSize(@Body() portionSizeDto: PortionSizeDto) {
     const { size } = portionSizeDto;

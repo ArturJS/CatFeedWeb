@@ -3,11 +3,26 @@ import moment from 'moment';
 
 class Api {
   constructor() {
-    const { hostname, protocol } = window.location || {};
+    const { hostname, protocol } = window.location;
 
     this._axios = axios.create({
       baseURL: `${protocol}//${hostname}:3001`
     });
+  }
+
+  async feedNow() {
+    await this._axios.post('/feed-now');
+  }
+
+  async getPortionSize() {
+    const { data } = await this._axios.get('/portion-size');
+    const { size } = data;
+
+    return size;
+  }
+
+  async updatePortionSize(portionSize) {
+    await this._axios.post('/portion-size', { size: portionSize });
   }
 
   async getSchedules() {
@@ -26,5 +41,3 @@ class Api {
 }
 
 export const api = new Api();
-
-window.api = api;
