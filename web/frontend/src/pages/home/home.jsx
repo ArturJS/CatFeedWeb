@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
-import { IconSlider, Scheduler } from './components';
+import { FeedNow, IconSlider, Scheduler, Notifications } from './components';
 import './home.scss';
 
 export const Home = () => {
@@ -9,7 +8,7 @@ export const Home = () => {
       <div className="page-content">
         <h1>Кормушка для кота</h1>
         <section>
-          <Button type="primary">Покормить сейчас</Button>
+          <FeedNow />
         </section>
 
         <section>
@@ -22,6 +21,10 @@ export const Home = () => {
 
         <section>
           <Scheduler />
+        </section>
+
+        <section>
+          <Notifications />
         </section>
       </div>
     </div>
