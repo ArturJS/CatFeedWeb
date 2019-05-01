@@ -2,6 +2,11 @@ import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PortionSizeDto, ScheduleDto } from './dto';
 
+interface TSchedule {
+  id: string;
+  time: number;
+}
+
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -34,7 +39,7 @@ export class AppController {
   }
 
   @Post('/schedules')
-  createOrUpdateSchedule(@Body() scheduleDto: ScheduleDto) {
+  createOrUpdateSchedule(@Body() scheduleDto: ScheduleDto): TSchedule {
     const { id, time } = scheduleDto;
 
     return this.appService.createOrUpdateSchedule({
